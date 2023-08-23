@@ -1,95 +1,84 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
+import styles from "./Home.module.css"
+import { useRouter } from 'next/navigation'
+import useTheme from "../hooks/useTheme"
+import { useState } from "react"
+import { Button } from "../components"
 
 export default function Home() {
+  const { themes, setTheme, currentTheme } = useTheme()
+  const [value, setValue] = useState("")
+  const Router = useRouter()
+
+  const handleInput = (e: any) => {
+    e.preventDefault()
+    const id = currentTheme.id
+
+    if (!value || value[0] === " ") {
+      alert("Please enter a name!")
+      return
+    }
+    if (id == 0) Router.push(value)
+    else Router.push(`/${value}?color=${id}`)
+  }
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+    <main className={styles.container}>
+      <div className={styles.main}>
+        <h1 className={styles.title}>
+          Create a <span className={styles.span}>Birthday</span> Wish
+        </h1>
+      </div>
+
+      <div className={styles.themeWrapper}>
+        <form
+          className={styles.theme}
+          id="theme-input"
+          onChange={(e) => setTheme((e.target as HTMLElement).id)}
+        >
+          {themes.map((item) => (
+            <input
+              key={item.id.toString()}
+              type="radio"
+              className={item.name}
+              id={item.id.toString()}
+              name="theme"
+              value={item.color}
+              defaultChecked={currentTheme.id === item.id}
             />
+          ))}
+        </form>
+        
+      </div>
+      
+      <div>
+        <form className={styles.form} onSubmit={handleInput}>
+          <input
+            id="input"
+            name="go"
+            className={styles.input}
+            placeholder="Enter your name"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <Button className={styles.button} type="submit" text="Go!" />
+        </form>
+        <p className={`${styles['desc']} ${styles['mb-3']}`}>
+          Created by{" "}
+          <a
+            className={styles.span}
+            href="https://github.com/WebDeveloper0315"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Blackghost
           </a>
-        </div>
-      </div>
+          .
+        </p>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        
       </div>
     </main>
   )
 }
+
