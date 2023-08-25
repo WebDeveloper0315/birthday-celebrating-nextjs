@@ -26,20 +26,119 @@ const Wish = () => {
     const [timer, setTimer] = useState(2)
     const { setTheme } = useTheme()
 
+    var emoji = require('emoji');
+
+    var v_time = 0
     useEffect(() => {
         setTheme(color)
         if (downloading === false) {
 
             const id = setInterval(() => {
                 setTimer(() => {
-                    console.log('time', jsConfetti)
-                    jsConfetti.addConfetti({
-                        emojis: ['⚡️', '💥', '✨', '🌸'],
-                        emojiSize: 15,
-                        confettiRadius: 6,
-                        confettiNumber: 100,
-                    })
-                        .then(() => jsConfetti.clearCanvas())
+                    v_time = RandomNumber(0, 9)
+
+                    console.log('time', v_time)
+                    
+                    if (v_time == 1) {
+                        jsConfetti.addConfetti({
+                            emojis: ['😀', '🤣', '😍', '😛', '😘', '😁'],
+                            emojiSize: 15,
+                            confettiRadius: 6,
+                            confettiNumber: 70,
+                        })
+                            .then(() => jsConfetti.clearCanvas())
+                    }
+                    else if (v_time == 2) {
+                        jsConfetti.addConfetti({
+                            emojis: ['🧡', '❤️', '💙', '💚', '💛', '🤎'],
+                            emojiSize: 15,
+                            confettiRadius: 6,
+                            confettiNumber: 70,
+                        }).then(() => jsConfetti.clearCanvas())
+                    }
+                    else if (v_time == 3) {
+                        jsConfetti.addConfetti({
+                            emojis: ['🤏', '👆', '👍', '🤚', '👌', '👊'],
+                            emojiSize: 15,
+                            confettiRadius: 6,
+                            confettiNumber: 70,
+                        }).then(() => jsConfetti.clearCanvas())
+                    }
+                    else if (v_time == 4) {
+                        jsConfetti.addConfetti({
+                            emojis: ['🌸', '🏵️', '🌹', '🥀', '🌷', '🌼'],
+                            emojiSize: 15,
+                            confettiRadius: 6,
+                            confettiNumber: 70,
+                        }).then(() => jsConfetti.clearCanvas())
+                    }
+                    else if (v_time == 5) {
+                        jsConfetti.addConfetti({
+                            emojis: ['🦄', '🐷', '🐏', '🐇', '🐼', '🐤'],
+                            emojiSize: 15,
+                            confettiRadius: 6,
+                            confettiNumber: 70,
+                        }).then(() => jsConfetti.clearCanvas())
+                    }
+                    else if (v_time == 6) {
+                        jsConfetti.addConfetti({
+                            emojis: ['🛰️', '🚠', '🚀', '🛸', '⌛', '✈️'],
+                            emojiSize: 15,
+                            confettiRadius: 6,
+                            confettiNumber: 70,
+                        }).then(() => jsConfetti.clearCanvas())
+                    }
+                    else if (v_time == 7) {
+                        jsConfetti.addConfetti({
+                            emojis: ['🌈', '🌧️', '🌞', '🌀', '🌟', '⛄'],
+                            emojiSize: 15,
+                            confettiRadius: 6,
+                            confettiNumber: 70,
+                        }).then(() => jsConfetti.clearCanvas())
+                    }
+                    else if (v_time == 7) {
+                        jsConfetti.addConfetti({
+                            emojis: ['🎖️', '🏆', '🏅', '🥇', '🥈', '🥉'],
+                            emojiSize: 15,
+                            confettiRadius: 6,
+                            confettiNumber: 70,
+                        }).then(() => jsConfetti.clearCanvas())
+                    }
+                    else if (v_time == 7) {
+                        jsConfetti.addConfetti({
+                            emojis: ['⚽', '⚾', '🥎', '🏀', '🏐', '🏈'],
+                            emojiSize: 15,
+                            confettiRadius: 6,
+                            confettiNumber: 70,
+                        }).then(() => jsConfetti.clearCanvas())
+                    }
+                    else if (v_time == 8) {
+                        jsConfetti.addConfetti({
+                            emojis: ['💍', '📿', '💄', '💎', '👑', '🔔'],
+                            emojiSize: 15,
+                            confettiRadius: 6,
+                            confettiNumber: 70,
+                        }).then(() => jsConfetti.clearCanvas())
+                    }
+                    else if (v_time == 9) {
+                        jsConfetti.addConfetti({
+                            emojis: ['📖', '📘', '📒', '📃', '💰', '📕'],
+                            emojiSize: 15,
+                            confettiRadius: 6,
+                            confettiNumber: 70,
+                        }).then(() => jsConfetti.clearCanvas())
+                    }
+                    else if (v_time == 0) {
+                        jsConfetti.addConfetti({
+                            emojis: [],
+                            emojiSize: 15,
+                            confettiRadius: 6,
+                            confettiNumber: 70,
+                        }).then(() => jsConfetti.clearCanvas())
+                    }
+
+
+
                     audioRef.current.play()
 
                 })
