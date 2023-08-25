@@ -1,6 +1,7 @@
 # **Birthday Celebrating Website By Next.js 13.4**
 
 This website was built with Next.js 13.4 and Typescript.
+This project uses App router
 
 ## Local Setup
 
@@ -25,4 +26,5 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 <br></br>
-## Issues to be solved in the next step
+## Issues that have to work out in the next step
+This project
