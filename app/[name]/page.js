@@ -137,8 +137,6 @@ const Wish = () => {
                         }).then(() => jsConfetti.clearCanvas())
                     }
 
-
-
                     audioRef.current.play()
 
                 })
