@@ -1,9 +1,9 @@
-# **Birthday Celebrating Website By Next.js 13.4**
+# :birthday: **Birthday Celebrating Website By Next.js 13.4** :cake: 
 
-This website was built with Next.js 13.4 and Typescript.
-This project uses App router
+This website was built with [Next.js 13.4](https://nextjs.org/) and Typescript.
+This project uses [App router](https://nextjs.org/docs)
 
-## Local Setup
+## :heart: Local Setup
 
 First, clone this repository:
 
@@ -25,22 +25,22 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Images
+## :rose: Images
 <img src="Intro/Intro.gif" width="600px" />
 
 <br></br>
-## Issues that have to work out in the next step
+## :worried: Issues that have to work out in the next step
 -   This project was constructed with TypeScript, but [this file](app/%5Bname%5D/page.js) is JavaScript file.<br>
 I want to convert this file as TypeScript file, but I couldn't. <br>
 Don't worry... This project runs well.
 -   When I input the name with space (For example: [Jhon Smith]()), this shows as [Jhon%20Smith]().
 
-## Acknowledgements
+## :thumbsup: Acknowledgements
 **This was based on the *[Gourav Khunger](https://github.com/gouravkhunger/nextjs-birthday-wish)*'s project.**
 <br>I upgraded to [Next.js 13.4](https://nextjs.org/) and [App Router](https://nextjs.org/docs).
 
 
-## License
+## :handshake: License
 
 ```
 MIT License
