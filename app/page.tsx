@@ -21,13 +21,18 @@ export default function Home() {
     if (id == 0) Router.push(value)
     else Router.push(`/${value}?color=${id}`)
   }
+  
 
   return (
     <main className={styles.container}>
       <div className={styles.main}>
         <h1 className={styles.title}>
-          Create a <span className={styles.span}>Birthday</span> Wish
+          <span className={styles.span}>Welcome</span> to this page!
         </h1>
+        
+        <h2 className={styles.title}>
+          Create a <span className={styles.span}>Birthday</span> Wish
+        </h2>
       </div>
 
       <div className={styles.themeWrapper}>
@@ -44,9 +49,11 @@ export default function Home() {
               id={item.id.toString()}
               name="theme"
               value={item.color}
-              defaultChecked={currentTheme.id === item.id}
+              defaultChecked={currentTheme.id == item.id}
+              
             />
           ))}
+          
         </form>
         
       </div>

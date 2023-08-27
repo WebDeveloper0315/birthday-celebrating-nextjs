@@ -7,10 +7,11 @@ import styles from './Name.module.css'
 import messages from '@/utils/birthdayWishes'
 import { Button, CopyLinkButton } from '@/components'
 import JSConfetti from 'js-confetti'
+import * as emoji from 'node-emoji'
 
 const Wish = () => {
     const FileSaver = require('file-saver')
-    const jsConfetti = new JSConfetti()
+    
     const searchParams = useSearchParams()
     const pathname = usePathname()
     const name = pathname.substring(1)
@@ -25,23 +26,26 @@ const Wish = () => {
 
     const [timer, setTimer] = useState(2)
     const { setTheme } = useTheme()
+    const emoji = require('emoji')
 
-    var emoji = require('emoji');
-
+    
     var v_time = 0
+    var v_emoji = emoji.unifiedToHTML('😎')
+    console.log(v_emoji)
     useEffect(() => {
         setTheme(color)
+        const jsConfetti = new JSConfetti()
         if (downloading === false) {
 
             const id = setInterval(() => {
                 setTimer(() => {
-                    v_time = RandomNumber(0, 9)
-
-                    console.log('time', v_time)
+                    v_time = RandomNumber(1, 12)
+                    //console.log('time', v_time)
                     
                     if (v_time == 1) {
                         jsConfetti.addConfetti({
                             emojis: ['😀', '🤣', '😍', '😛', '😘', '😁'],
+                            
                             emojiSize: 15,
                             confettiRadius: 6,
                             confettiNumber: 70,
@@ -90,23 +94,7 @@ const Wish = () => {
                     }
                     else if (v_time == 7) {
                         jsConfetti.addConfetti({
-                            emojis: ['🌈', '🌧️', '🌞', '🌀', '🌟', '⛄'],
-                            emojiSize: 15,
-                            confettiRadius: 6,
-                            confettiNumber: 70,
-                        }).then(() => jsConfetti.clearCanvas())
-                    }
-                    else if (v_time == 7) {
-                        jsConfetti.addConfetti({
-                            emojis: ['🎖️', '🏆', '🏅', '🥇', '🥈', '🥉'],
-                            emojiSize: 15,
-                            confettiRadius: 6,
-                            confettiNumber: 70,
-                        }).then(() => jsConfetti.clearCanvas())
-                    }
-                    else if (v_time == 7) {
-                        jsConfetti.addConfetti({
-                            emojis: ['⚽', '⚾', '🥎', '🏀', '🏐', '🏈'],
+                            emojis: [],
                             emojiSize: 15,
                             confettiRadius: 6,
                             confettiNumber: 70,
@@ -114,7 +102,7 @@ const Wish = () => {
                     }
                     else if (v_time == 8) {
                         jsConfetti.addConfetti({
-                            emojis: ['💍', '📿', '💄', '💎', '👑', '🔔'],
+                            emojis: ['🎖️', '🏆', '🏅', '🥇', '🥈', '🥉'],
                             emojiSize: 15,
                             confettiRadius: 6,
                             confettiNumber: 70,
@@ -122,15 +110,31 @@ const Wish = () => {
                     }
                     else if (v_time == 9) {
                         jsConfetti.addConfetti({
+                            emojis: ['⚽', '⚾', '🥎', '🏀', '🏐', '🏈'],
+                            emojiSize: 15,
+                            confettiRadius: 6,
+                            confettiNumber: 70,
+                        }).then(() => jsConfetti.clearCanvas())
+                    }
+                    else if (v_time == 10) {
+                        jsConfetti.addConfetti({
+                            emojis: ['💍', '📿', '💄', '💎', '👑', '🔔'],
+                            emojiSize: 15,
+                            confettiRadius: 6,
+                            confettiNumber: 70,
+                        }).then(() => jsConfetti.clearCanvas())
+                    }
+                    else if (v_time == 11) {
+                        jsConfetti.addConfetti({
                             emojis: ['📖', '📘', '📒', '📃', '💰', '📕'],
                             emojiSize: 15,
                             confettiRadius: 6,
                             confettiNumber: 70,
                         }).then(() => jsConfetti.clearCanvas())
                     }
-                    else if (v_time == 0) {
+                    else if (v_time == 12) {
                         jsConfetti.addConfetti({
-                            emojis: [],
+                            emojis: ['🌈', '🌧️', '🌞', '🌀', '🌟', '⛄'],
                             emojiSize: 15,
                             confettiRadius: 6,
                             confettiNumber: 70,
