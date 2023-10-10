@@ -1,6 +1,6 @@
-# :birthday: **Birthday Celebrating Website By Next.js 13.4** :cake: 
+# :birthday: **Birthday Celebrating Website By Next.js 13.5.4** :cake: 
 
-This website was built with [Next.js 13.4](https://nextjs.org/) and Typescript.
+This website was built with [Next.js 13.5.4](https://nextjs.org/) and Typescript.
 This project uses [App router](https://nextjs.org/docs)
 
 ## :heart: Local Setup
@@ -37,7 +37,7 @@ Don't worry... This project runs well.
 
 ## :thumbsup: Acknowledgements
 **This was based on the *[Gourav Khunger](https://github.com/gouravkhunger/nextjs-birthday-wish)*'s project.**
-<br>I upgraded to [Next.js 13.4](https://nextjs.org/) and [App Router](https://nextjs.org/docs).
+<br>I upgraded to [Next.js 13.5.4](https://nextjs.org/) and [App Router](https://nextjs.org/docs).
 
 
 ## :handshake: License
