@@ -1,27 +1,35 @@
-'use client'
+"use client"
+
+import { useState, type FormEvent } from "react"
+import { useRouter } from "next/navigation"
+
 import styles from "./Home.module.css"
-import { useRouter } from 'next/navigation'
-import useTheme from "../hooks/useTheme"
-import { useState } from "react"
-import { Button } from "../components"
+import useTheme from "@/hooks/useTheme"
+import { Button } from "@/components"
 
 export default function Home() {
   const { themes, setTheme, currentTheme } = useTheme()
   const [value, setValue] = useState("")
-  const Router = useRouter()
+  const [error, setError] = useState<string | null>(null)
+  const router = useRouter()
 
-  const handleInput = (e: any) => {
-    e.preventDefault()
-    const id = currentTheme.id
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
 
-    if (!value || value[0] === " ") {
-      alert("Please enter a name!")
+    const name = value.trim()
+    if (!name) {
+      // An inline message rather than `alert()`, which blocks the page and
+      // cannot be styled, read out politely, or dismissed with the keyboard.
+      setError("Please enter a name.")
       return
     }
-    if (id == 0) Router.push(value)
-    else Router.push(`/${value}?color=${id}`)
+
+    setError(null)
+    // Names contain spaces, slashes, question marks and emoji. Encoding them is
+    // what stops "Jhon Smith" arriving on the next page as "Jhon%20Smith".
+    const path = `/${encodeURIComponent(name)}`
+    router.push(currentTheme.id === 0 ? path : `${path}?color=${currentTheme.id}`)
   }
-  
 
   return (
     <main className={styles.container}>
@@ -29,48 +37,55 @@ export default function Home() {
         <h1 className={styles.title}>
           <span className={styles.span}>Welcome</span> to this page!
         </h1>
-        
+
         <h2 className={styles.title}>
           Create a <span className={styles.span}>Birthday</span> Wish
         </h2>
       </div>
 
       <div className={styles.themeWrapper}>
-        <form
-          className={styles.theme}
-          id="theme-input"
-          onChange={(e) => setTheme((e.target as HTMLElement).id)}
-        >
-          {themes.map((item) => (
+        <fieldset className={styles.theme}>
+          <legend className={styles.srOnly}>Theme colour</legend>
+          {themes.map((theme) => (
             <input
-              key={item.id.toString()}
+              key={theme.id}
               type="radio"
-              className={item.name}
-              id={item.id.toString()}
+              className={theme.name}
+              id={`theme-${theme.id}`}
               name="theme"
-              value={item.color}
-              defaultChecked={currentTheme.id == item.id}
-              
+              value={theme.id}
+              aria-label={`${theme.name} theme`}
+              checked={currentTheme.id === theme.id}
+              onChange={() => setTheme(theme.id)}
             />
           ))}
-          
-        </form>
-        
+        </fieldset>
       </div>
-      
+
       <div>
-        <form className={styles.form} onSubmit={handleInput}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <input
             id="input"
             name="go"
             className={styles.input}
             placeholder="Enter your name"
             value={value}
-            onChange={(e) => setValue(e.target.value)}
+            autoComplete="off"
+            aria-label="Name to wish"
+            aria-invalid={error !== null}
+            onChange={(event) => {
+              setValue(event.target.value)
+              if (error) setError(null)
+            }}
           />
           <Button className={styles.button} type="submit" text="Go!" />
         </form>
-        <p className={`${styles['desc']} ${styles['mb-3']}`}>
+
+        <p className={styles.error} role="status">
+          {error}
+        </p>
+
+        <p className={`${styles.desc} ${styles.mb3}`}>
           Created by{" "}
           <a
             className={styles.span}
@@ -82,10 +97,7 @@ export default function Home() {
           </a>
           .
         </p>
-
-        
       </div>
     </main>
   )
 }
-

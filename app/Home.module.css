@@ -81,6 +81,34 @@
   margin-right: 8px;
 }
 
-.mb-3 {
+.mb3 {
   margin-bottom: 3rem;
+}
+
+/* The radio group is a <fieldset> now, so strip the default chrome. */
+.theme {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reserves its line so the layout does not jump when validation fails. */
+.error {
+  min-height: 1.5rem;
+  margin: 0.75rem 0 0;
+  text-align: center;
+  font-weight: 600;
+  color: #fca5a5;
 }
