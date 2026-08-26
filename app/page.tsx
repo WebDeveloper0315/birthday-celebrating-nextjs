@@ -35,11 +35,11 @@ export default function Home() {
     <main className={styles.container}>
       <div className={styles.main}>
         <h1 className={styles.title}>
-          <span className={styles.span}>Welcome</span> to this page!
+          <span className={styles.span}>William Wei Ming! </span>Welcome to this page!
         </h1>
 
         <h2 className={styles.title}>
-          Create a <span className={styles.span}>Birthday</span> Wish
+          Create a <span className={styles.span}>Birthday</span> Wish! (With Volume 90%, not 100% or with earphones)
         </h2>
       </div>
 
